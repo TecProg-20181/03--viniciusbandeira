@@ -106,6 +106,10 @@ def hangman(secret_word):
             print 'Sorry, you ran out of guesses. The word was ',
             secret_word, '.'
 
+def main():
+    secret_word = load_words().lower()
+    hangman(secret_word)
 
-secret_word = load_words().lower()
-hangman(secret_word)
+
+if __name__ == '__main__':
+    main()
