@@ -21,14 +21,6 @@ def load_words():
 
 
 def is_word_guessed(secret_word, letters_guessed):
-    secret_letters = []
-
-#    for letter in secret_word:
-#        if letter in secret_letters:
-#            secret_letters.append(letter)
-#        else:
-#            pass
-
     for letter in secret_word:
         if letter in letters_guessed:
             pass
