@@ -10,11 +10,11 @@ def load_words():
     take a while to finish.
     """
     print "Loading word list from file..."
-    # in_file: file
+
     in_file = open(WORDLIST_FILENAME, 'r', 0)
-    # line: string
+
     line = in_file.readline()
-    # wordlist: list of strings
+
     wordlist = string.split(line)
     print "  ", len(wordlist), "words loaded."
     return random.choice(wordlist)
@@ -31,22 +31,19 @@ def is_word_guessed(secret_word, letters_guessed):
 
 
 def get_guessed_word():
-
     guessed = ''
 
     return guessed
 
 
 def get_available_letters():
-    import string
-    # 'abcdefghijklmnopqrstuvwxyz'
+    # return 'abcdefghijklmnopqrstuvwxyz'
     available = string.ascii_lowercase
 
     return available
 
 
 def hangman(secret_word):
-
     guesses = 8
     letters_guessed = []
     print 'Welcome to the game, Hangam!'
