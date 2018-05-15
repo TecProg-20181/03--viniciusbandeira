@@ -4,14 +4,20 @@ import string
 WORDLIST_FILENAME = "palavras.txt"
 
 
-def load_words():
-    """
-    Depending on the size of the word list, this function may
-    take a while to finish.
+def load_words(file_name):
+    """Load all words of file and randomly select a word
+
+        :param file_name: Name of text file 
+        :type file_name: str
+        :returns: str without blanc spaces
+        :rtype: str
+
+        .. note:: 
+            Depending on the size of the word list, this function may take a while to finish.
     """
     print "Loading word list from file..."
 
-    in_file = open(WORDLIST_FILENAME, 'r', 0)
+    in_file = open(file_name, 'r', 0)
 
     line = in_file.readline()
 
@@ -21,6 +27,15 @@ def load_words():
 
 
 def is_word_guessed(secret_word, letters_guessed):
+    """Verify if all letters_guessed is in secret_word
+
+        :param secret_word: Word useed in hang game
+        :param letters_guessed: Word submited by the player
+        :type letters_guessed: str
+        :type secret_word: str
+        :returns: If all letters_guessed is in secret_word is True
+        :rtype: bool
+    """
     for letter in secret_word:
         if letter in letters_guessed:
             pass
@@ -37,14 +52,31 @@ def get_guessed_word():
 
 
 def get_available_letters():
-    # return 'abcdefghijklmnopqrstuvwxyz'
+    """Return a string of the available letters of ascII pattern.
+
+    :returns: The string 'abcdefghijklmnopqrstuvwxyz'
+    :rtype: str
+    """
     available = string.ascii_lowercase
 
     return available
 
 
-def hangman(secret_word):
-    guesses = 8
+def hangman(secret_word, guesses):
+    """Iniciate a hangman game, the closes when user 
+    submit all letters of secret_word or miss the 
+    letter zeroing the value of gesses left.
+    
+        :param secret_word: A word will be used in hang game
+        :param guesses: Number of max wrong guesses
+        :type secret_word: str
+        :type guesses: int
+        :returns: Do not return nothing
+
+        .. todo:: 
+            - Modulate this function
+    """
+
     letters_guessed = []
     print 'Welcome to the game, Hangam!'
     print 'I am thinking of a word that is', len(secret_word), ' letters long.'
@@ -103,9 +135,10 @@ def hangman(secret_word):
             print 'Sorry, you ran out of guesses. The word was ',
             secret_word, '.'
 
+
 def main():
-    secret_word = load_words().lower()
-    hangman(secret_word)
+    secret_word = load_words(WORDLIST_FILENAME).lower()
+    hangman(secret_word, 8)
 
 
 if __name__ == '__main__':
